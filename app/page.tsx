@@ -10,7 +10,7 @@ const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.
   ssr: false,
   loading: () => (
     <div className='flex h-96 w-full flex-col items-center justify-center'>
-      <svg className='-ml-1 mr-3 h-5 w-5 animate-spin text-black' fill='none' viewBox='0 0 24 24'>
+      <svg className='-ml-1 mr-3 size-5 animate-spin text-black' fill='none' viewBox='0 0 24 24'>
         <circle className='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='4' />
         <path
           className='opacity-75'
@@ -21,7 +21,10 @@ const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.
     </div>
   ),
 })
-const Common = dynamic(() => import('@/components/canvas/View').then((mod) => mod.Common), { ssr: false })
+const QuickLightsCameraColor = dynamic(
+  () => import('@/components/canvas/QuickLightsCameraColor').then((mod) => mod.QuickLightsCameraColor),
+  { ssr: false },
+)
 
 export default function Page() {
   return (
@@ -38,7 +41,7 @@ export default function Page() {
           <View className='flex h-96 w-full flex-col items-center justify-center'>
             <Suspense fallback={null}>
               <Logo route='/blob' scale={0.6} position={[0, 0, 0]} />
-              <Common />
+              <QuickLightsCameraColor />
             </Suspense>
           </View>
         </div>
@@ -54,7 +57,7 @@ export default function Page() {
           <View orbit className='relative h-full  sm:h-48 sm:w-full'>
             <Suspense fallback={null}>
               <Dog scale={2} position={[0, -1.6, 0]} rotation={[0.0, -0.3, 0]} />
-              <Common color={'lightpink'} />
+              <QuickLightsCameraColor color={'lightpink'} />
             </Suspense>
           </View>
         </div>
@@ -63,7 +66,7 @@ export default function Page() {
           <View orbit className='relative h-full animate-bounce sm:h-48 sm:w-full'>
             <Suspense fallback={null}>
               <Duck route='/blob' scale={2} position={[0, -1.6, 0]} />
-              <Common color={'lightblue'} />
+              <QuickLightsCameraColor color={'lightblue'} />
             </Suspense>
           </View>
         </div>
