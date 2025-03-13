@@ -1,22 +1,21 @@
 'use client'
 
-import { View } from '@react-three/drei'
+import Link from 'next/link'
 
-export default function Page() {
+export default function Blog() {
   return (
-    <>
-      <div className='mx-auto flex w-full flex-col flex-wrap items-center md:flex-row  lg:w-4/5'>
-        <div className='flex w-full flex-col items-start justify-center p-12 text-center md:w-2/5 md:text-left'>
-          <p className='w-full uppercase'>AAAALEXXXX</p>
-          <h1 className='my-4 text-5xl font-bold leading-tight'>Next 3D Starter</h1>
-          <p className='mb-8 text-2xl leading-normal'>A minimalist starter for React, React-three-fiber and Threejs.</p>
-        </div>
-      </div>
+    <div className='min-h-screen bg-blue-50/80 p-8 backdrop-blur-sm'>
+      <div className='mx-auto max-w-4xl'>
+        <h1 className='mb-8 text-4xl font-bold text-blue-600'>Blog</h1>
+        <p className='mb-4'>This is the blog page. Add your blog posts and content here.</p>
 
-      <View className='absolute top-0 flex h-screen w-full flex-col items-center justify-center'>
-        {/* <Blob />
-        <Common /> */}
-      </View>
-    </>
+        <Link
+          href='/'
+          className='mt-8 inline-block rounded-md bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700'
+        >
+          Back to Home
+        </Link>
+      </div>
+    </div>
   )
 }

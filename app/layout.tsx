@@ -1,9 +1,11 @@
-import { Layout } from '@/components/dom/Layout'
 import '@/global.css'
+import { TransitionProvider } from '@/context/TransitionContext'
+import PersistentCanvas from '@/components/canvas/PersistentCanvas'
+import TransitionOverlay from '@/components/dom/TransitionOverlay'
 
 export const metadata = {
-  title: 'Next.js + Three.js',
-  description: 'A minimal starter for Nextjs + React-three-fiber and Threejs.',
+  title: 'Arcasoy - Portfolio',
+  description: 'Personal portfolio and website of Arcasoy.',
 }
 
 export default function RootLayout({ children }) {
@@ -15,8 +17,16 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body suppressHydrationWarning>
-        {/* To avoid FOUT with styled-components wrap Layout with StyledComponentsRegistry https://beta.nextjs.org/docs/styling/css-in-js#styled-components */}
-        <Layout>{children}</Layout>
+        <TransitionProvider>
+          {/* Persistent Canvas stays mounted across all routes */}
+          <PersistentCanvas />
+
+          {/* Global Transition Overlay */}
+          <TransitionOverlay />
+
+          {/* Page Content */}
+          <main className='relative z-10'>{children}</main>
+        </TransitionProvider>
       </body>
     </html>
   )
